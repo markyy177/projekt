@@ -4,6 +4,7 @@ session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login"])) {
     $email = $_POST['email'];
     $pass = $_POST['password'];
+    $remember = isset($_POST['rememberme']);
     $query="SELECT * FROM adatok WHERE email =:email AND megerositve = 1";
     
             $lekerdez = $kapcsolat -> prepare($query);
@@ -12,8 +13,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login"])) {
             $user = $lekerdez -> fetch(PDO::FETCH_ASSOC);
             if ($user && password_verify($pass,$user["jelszo"])) {
                 $_SESSION["user"]=$user["felhasznalonev"];
+                $_SESSION["user_id"]=$user["id"];
+                if ($remember) {
+                    $token = bin2hex(random_bytes(32));
+                    $expires = time()+(86400*30);
+                    $query0 = "UPDATE adatok SET remember_token = :token WHERE id=:id";
+                    $lekerdez = $kapcsolat->prepare($query0);
+                    $lekerdez -> bindParam(':token',$token,PDO::PARAM_STR);
+                    $lekerdez -> bindParam(':id',$user['id'],PDO::PARAM_INT);
+                    $lekerdez -> execute();
+                    setcookie("remember_me",$token,$expires,"/","",true,true);
+                }
                 echo"sikeres bejelentkezés"." üdv, ".$_SESSION["user"];
-                header("Location: registration.php");
+                header("Location: index.php");
             }
             else{
                 echo"Hibás email vagy jelszó";
@@ -34,6 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login"])) {
             Email cím: <input type="email" name="email"><br>
             Jelszó: <input type="password" name="password"><br>
             <button type="submit" name="login">Bejelentkezés</button>
+            <input type="checkbox" name="rememberme"> Jegyezzen meg!
             <a href="resetpass.php">Elfelejtettem a jelszavamat</a>
         </form>
 </body>
