@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login"])) {
                     setcookie("remember_me",$token,$expires,"/","",true,true);
                 }
                 echo"sikeres bejelentkezés"." üdv, ".$_SESSION["user"];
-                header("Location: index.php");
+                header("Location: account.php");
             }
             else{
                 echo"Hibás email vagy jelszó";
@@ -48,6 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login"])) {
             <button type="submit" name="login">Bejelentkezés</button>
             <input type="checkbox" name="rememberme"> Jegyezzen meg!
             <a href="resetpass.php">Elfelejtettem a jelszavamat</a>
+            <br>Nincs még fiókod? : <button><a href="registration.php">Regisztráció</a></button>
         </form>
 </body>
 </html>
