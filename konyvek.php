@@ -59,7 +59,7 @@
                 <a href="index.html"><i class="fa fa-home"></i>   Kezdőlap</a>
             </li>
             <li>
-                <a href="konyvek.php"><i class="fa fa-book"></i>   Könyvek</a>
+                <a href="konyvek.html"><i class="fa fa-book"></i>   Könyvek</a>
             </li>
             <li>
                 <a href="bejelentkezes.php"><i class="fa fa-book"></i>   Fiók</a>
@@ -95,6 +95,7 @@
                         echo '<p class="author">Szerző: ' . $row["szerzo"] . '</p>';
                         echo '<p class="year">Kiadás: ' . $row["kiadas"] . '</p>';
                         echo '<p>' . $row["leiras"] . '</p>';
+                        echo '<p><a href="ertekeles.php?konyv_id=' . $row["id"] . '">Értékelés</a></p>';
                         echo '</div>';
                     }
                 }
