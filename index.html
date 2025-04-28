@@ -2,31 +2,124 @@
 <html lang="hu">
 <head>
     <meta charset="UTF-8">
-    <title></title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Könyvajánló</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
-    <link href="style.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f0f4f8;
+            color: #1a2a44;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Navigációs sáv */
+        .header {
+            background-color: #1a2a44;
+            width: 100%;
+            padding: 15px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 10;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: #f0f4f8;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul li a i {
+            margin-right: 8px;
+        }
+
+        nav ul li a:hover {
+            color: #ffd700;
+        }
+
+        /* Tartalom doboz */
+        .box-area {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            padding: 30px;
+            max-width: 1000px;
+            margin: 80px auto 40px auto;
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .box-area h1 {
+            font-size: 2.2em;
+            color: #1a2a44;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .box-area p {
+            font-size: 1.1em;
+            color: #5a6b88;
+            line-height: 1.8;
+            text-align: center;
+            width: 100%;
+            max-width: 700px;
+        }
+    </style>
 </head>
 <body>
-    <nav>
-        <ul>
-            <li>
-                <a href="#"><i class="fa fa-home"></i>   Kezdőlap</a>
-            </li>
-            <li>
-                <a href="konyvek.php" fa fa-book></i>   Könyvek</a>
-            </li>
-            <li>
-                <a href="bejelentkezes.php"><i class="fa fa-book"></i>   Fiók</a>
-            </li>
-        </ul>
-    </nav>
-    <div class="wrapper">
-        <div class="section">
-            <div class="box-area">
-                
-            </div>
-        </div>
+    <div class="header">
+        <nav>
+            <ul>
+                <li>
+                    <a href="#"><i class="fa fa-home"></i> Kezdőlap</a>
+                </li>
+                <li>
+                    <a href="konyvek.php"><i class="fa fa-book"></i> Könyvek</a>
+                </li>
+                <li>
+                    <a href="bejelentkezes.php"><i class="fa fa-user"></i> Fiók</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="box-area">
+        <h1>Üdvözlünk a Könyvajánló oldalon!</h1>
+        <p>Ez egy hely, ahol felfedezheted a legújabb és legnépszerűbb könyveket, 
+        megtekintheted mások véleményeit, és te magad is értékelheted kedvenc olvasmányaidat. 
+        Merülj el a könyvek világában, és oszd meg élményeidet!</p>
     </div>
 </body>
 </html>

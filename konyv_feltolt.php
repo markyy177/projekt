@@ -1,18 +1,19 @@
 <?php
 require_once("kapcsolat.php");
+session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["feltolt"])) {
     $szerzo = $_POST['szerzo'];
     $cim = $_POST['cim'];
     $leiras = $_POST['leiras'];
     $kiadev = $_POST['kiadev'];
     $file = $_FILES['borito'];
-    $user_id = 38;
+    $user_id = $_SESSION["user_id"];
 
     $img_tmppass = $file['tmp_name'];
     if (isset($_FILES['borito']) && $_FILES['borito']['error'] === UPLOAD_ERR_OK) {
         $img = file_get_contents($img_tmppass);
         $img_data = base64_encode($img);
-        $query0 = "INSERT INTO konyvek (cim, leiras, szerzo, kiadas, user_id, borito) VALUES (:cim, :leiras, :szerzo, :kiadev, :user_id, :borito)";
+        $query0 = "INSERT INTO jovahagyando_konyvek (cim, leiras, szerzo, kiadas, user_id, borito, jovahagyva) VALUES (:cim, :leiras, :szerzo, :kiadev, :user_id, :borito, false)";
         $lekerdez = $kapcsolat->prepare($query0);
         $lekerdez->bindParam(':cim', $cim, PDO::PARAM_STR);
         $lekerdez->bindParam(':leiras', $leiras, PDO::PARAM_STR);

@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["forgot_password"])) {
             // Email content
             $mail->isHTML(true);
             $mail->Subject = 'Elfelejtett jelszó';
-            $mail->Body = "<h3><a href='http://localhost/prr/projekt/reset_password.php?token=$reset_token'>Kattintson a linkre az új jelszó megadásához</a></h3>";
+            $mail->Body = "<h3><a href='http://localhost/projekt/reset_password.php?token=$reset_token'>Kattintson a linkre az új jelszó megadásához</a></h3>";
             $mail->AltBody = 'Ez az email tartalmának szöveges változata.';
 
             // Send email
